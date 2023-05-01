@@ -8,10 +8,14 @@
 import SwiftUI
 
 @main
-struct Ciga_Watch_AppApp: App {
-    var body: some Scene {
+struct CigaWatchApp: App {
+    
+    @StateObject var itemListModel = InhaleRecordModel()
+    
+    @SceneBuilder var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(itemListModel)
         }
     }
 }
