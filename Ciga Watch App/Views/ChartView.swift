@@ -34,12 +34,12 @@ struct ChartView: View {
     private func updateChartDataRange() {
         if (highlightedDateIndex - chartDataRange.lowerBound) < 2, chartDataRange.lowerBound > 0 {
             let newLowerBound = max(0, chartDataRange.lowerBound - 1)
-            let newUpperBound = min(newLowerBound + 6, sampleData.count - 1)
+            let newUpperBound = min(newLowerBound + 6, chartData.count - 1)
             chartDataRange = (newLowerBound...newUpperBound)
             return
         }
-        if (chartDataRange.upperBound - highlightedDateIndex) < 2, chartDataRange.upperBound < sampleData.count - 1 {
-            let newUpperBound = min(chartDataRange.upperBound + 1, sampleData.count - 1)
+        if (chartDataRange.upperBound - highlightedDateIndex) < 2, chartDataRange.upperBound < chartData.count - 1 {
+            let newUpperBound = min(chartDataRange.upperBound + 1, chartData.count - 1)
             let newLowerBound = max(0, newUpperBound - 6)
             chartDataRange = (newLowerBound...newUpperBound)
             return
@@ -52,7 +52,7 @@ struct ChartView: View {
     }
     
     private func isLastDataPoint(_ dataPoint: ChartData.DataElement) -> Bool {
-        sampleData[chartDataRange.upperBound].id == dataPoint.id
+        return chartData[chartDataRange.upperBound].id == dataPoint.id
     }
     
     
@@ -79,9 +79,9 @@ struct ChartView: View {
     
     /// The date value that corresponds to the crown offset.
     private var crownOffsetDate: Date {
-        let dateDistance = sampleData[0].date.distance(
-            to: sampleData[sampleData.count - 1].date) * (crownOffset / Double(sampleData.count - 1))
-        return sampleData[0].date.addingTimeInterval(dateDistance)
+        let dateDistance = chartData[0].date.distance(
+            to: chartData[chartData.count - 1].date) * (crownOffset / Double(chartData.count - 1))
+        return chartData[0].date.addingTimeInterval(dateDistance)
     }
     
     var body: some View {
@@ -90,7 +90,7 @@ struct ChartView: View {
             .digitalCrownRotation(
                 detent: $highlightedDateIndex,
                 from: 0,
-                through: sampleData.count - 1,
+                through: chartData.count - 1,
                 by: 1,
                 sensitivity: .medium
             ) { crownEvent in
@@ -112,7 +112,7 @@ struct ChartView: View {
             .padding(.bottom, 15)
             .padding(.horizontal, 7)
             .edgesIgnoringSafeArea(.bottom)
-            .navigationTitle("Productivity")
+            .navigationTitle("Progress")
             .navigationBarTitleDisplayMode(.inline)
     }
 }
