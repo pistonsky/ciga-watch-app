@@ -23,21 +23,20 @@ struct TrackerView: View {
                 List {
                     Button("1 ciga") {
                         model.items.append(InhaleRecord(8, date: Date()))
+                        WKInterfaceDevice.current().play(.directionDown)
                     }.foregroundColor(.orange)
                     Button("1 inhale") {
                         model.items.append(InhaleRecord(1, date: Date()))
+                        WKInterfaceDevice.current().play(.click)
                     }.foregroundColor(.green)
                     Button("2 inhales") {
                         model.items.append(InhaleRecord(2, date: Date()))
+                        WKInterfaceDevice.current().play(.success)
                     }.foregroundColor(.blue)
                     Button("3 inhales") {
                         model.items.append(InhaleRecord(3, date: Date()))
+                        WKInterfaceDevice.current().play(.success)
                     }.foregroundColor(.cyan)
-                    
-                    if model.items.isEmpty {
-                        Text("No items to do!")
-                            .foregroundStyle(.gray)
-                    }
                 }
                 .navigationTitle("Smoke")
                 .frame(width: geometry.size.width / 2)
