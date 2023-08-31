@@ -18,7 +18,9 @@ struct ChartData {
         return Dictionary(grouping: items, by: \.date)
             .compactMap {
                 let date = $0
-                return DataElement(date: date, inhales: UInt32($1.count))
+                return DataElement(date: date, inhales: UInt32($1.reduce(0, { partialResult, inhaleRecord in
+                    partialResult + Int(truncating: inhaleRecord.n)
+                })))
             }
             .sorted {
                 $0.date < $1.date

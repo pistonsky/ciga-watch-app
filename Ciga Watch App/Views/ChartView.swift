@@ -47,12 +47,15 @@ struct ChartView: View {
     }
     
     private var chartData: [ChartData.DataElement] {
-        var data = ChartData.createData(model.items)
-        return Array(data[chartDataRange.clamped(to: (0...data.count - 1))])
+        let data = ChartData.createData(model.items)
+        if (data.count > 0) {
+            return Array(data[chartDataRange.clamped(to: (0...data.count - 1))])
+        }
+        return [];
     }
     
     private func isLastDataPoint(_ dataPoint: ChartData.DataElement) -> Bool {
-        return chartData[chartDataRange.upperBound].id == dataPoint.id
+        return chartData[chartData.count - 1].id == dataPoint.id
     }
     
     
