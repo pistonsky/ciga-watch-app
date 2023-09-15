@@ -14,17 +14,19 @@ struct ChartData {
         let inhales: UInt32
     }
     
-    static func createData(_ items: [InhaleRecord]) -> [DataElement] {
-        return Dictionary(grouping: items, by: \.date)
-            .compactMap {
-                let date = $0
-                return DataElement(date: date, inhales: UInt32($1.reduce(0, { partialResult, inhaleRecord in
-                    partialResult + Int(truncating: inhaleRecord.n)
-                })))
-            }
-            .sorted {
-                $0.date < $1.date
-            }
+    static func createData(_ items: [Inhale]) -> [DataElement] {
+        let calendar = Calendar.current
+        return Dictionary(grouping: items) { element in
+            return calendar.startOfDay(for: element.smokeDate)
+        }
+        .compactMap { (key, inhale) in
+            return DataElement(date: key, inhales: UInt32(inhale.reduce(0, { partialResult, inhale in
+                partialResult + Int(truncating: inhale.n as NSNumber)
+            })))
+        }
+        .sorted {
+            $0.date < $1.date
+        }
     }
 }
 

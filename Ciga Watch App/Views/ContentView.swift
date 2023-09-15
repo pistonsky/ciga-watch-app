@@ -6,17 +6,19 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
-    @EnvironmentObject private var model: InhaleRecordModel
+    @Environment(\.modelContext) private var modelContext
+    @Query private var inhales: [Inhale]
     
     var body: some View {
         TabView {
             NavigationStack {
-                TrackerView()
+                TrackerView(inhales: inhales)
             }
             NavigationStack {
-                ChartView()
+                ChartView(inhales: inhales)
             }
         }.tabViewStyle(.page)
     }

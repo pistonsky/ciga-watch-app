@@ -19,6 +19,8 @@
 		F922777A29FE96CC00E0C42F /* ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F922777929FE96CC00E0C42F /* ChartData.swift */; };
 		F922777F29FEC02900E0C42F /* Color+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F922777E29FEC02900E0C42F /* Color+AppColors.swift */; };
 		F922778129FEC3F900E0C42F /* DateFormatStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F922778029FEC3F900E0C42F /* DateFormatStyle.swift */; };
+		F9D022822AA0929300A11874 /* Inhale.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D022812AA0929300A11874 /* Inhale.swift */; };
+		F9D022832AA0929300A11874 /* Inhale.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D022812AA0929300A11874 /* Inhale.swift */; };
 		F9D799E52A021181008436C0 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9D799E42A021181008436C0 /* WidgetKit.framework */; };
 		F9D799E72A021181008436C0 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9D799E62A021181008436C0 /* SwiftUI.framework */; };
 		F9D799EA2A021181008436C0 /* ComplicationsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D799E92A021181008436C0 /* ComplicationsWidget.swift */; };
@@ -89,6 +91,7 @@
 		F922777929FE96CC00E0C42F /* ChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartData.swift; sourceTree = "<group>"; };
 		F922777E29FEC02900E0C42F /* Color+AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+AppColors.swift"; sourceTree = "<group>"; };
 		F922778029FEC3F900E0C42F /* DateFormatStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatStyle.swift; sourceTree = "<group>"; };
+		F9D022812AA0929300A11874 /* Inhale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inhale.swift; sourceTree = "<group>"; };
 		F9D799E22A021181008436C0 /* ComplicationsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ComplicationsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9D799E42A021181008436C0 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F9D799E62A021181008436C0 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -167,6 +170,7 @@
 				F922777129FE2F8D00E0C42F /* InhaleRecord.swift */,
 				F922777E29FEC02900E0C42F /* Color+AppColors.swift */,
 				F922778029FEC3F900E0C42F /* DateFormatStyle.swift */,
+				F9D022812AA0929300A11874 /* Inhale.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -350,6 +354,7 @@
 				F922777F29FEC02900E0C42F /* Color+AppColors.swift in Sources */,
 				F922777429FE31C100E0C42F /* InhaleRecordModel.swift in Sources */,
 				F922777829FE956500E0C42F /* ChartView.swift in Sources */,
+				F9D022822AA0929300A11874 /* Inhale.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +367,7 @@
 				F9D799FB2A021899008436C0 /* ChartData.swift in Sources */,
 				F9D799FC2A021A3C008436C0 /* InhaleRecord.swift in Sources */,
 				F9FE89A22A06B1EC00465DE6 /* PuffModel.xcdatamodeld in Sources */,
+				F9D022832AA0929300A11874 /* Inhale.swift in Sources */,
 				F9D799FA2A0216B6008436C0 /* InhaleRecordModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -437,6 +443,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Debug;
 		};
@@ -488,6 +495,7 @@
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Release;
 		};
@@ -518,7 +526,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Debug;
 		};
@@ -550,7 +558,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 9.4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Release;
 		};
@@ -613,7 +621,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Debug;
 		};
@@ -644,7 +652,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 9.4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Release;
 		};

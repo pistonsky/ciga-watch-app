@@ -8,10 +8,9 @@
 import WidgetKit
 import SwiftUI
 import Intents
+import SwiftData
 
 struct Provider: IntentTimelineProvider {
-    @EnvironmentObject private var model: InhaleRecordModel
-
     func placeholder(in context: Context) -> SimpleEntry {
         SimpleEntry(date: Date(), inhales: 37, configuration: ConfigurationIntent())
     }
@@ -59,27 +58,9 @@ struct ComplicationsEntryView : View {
 
 struct CornerView: View {
     var entry: Provider.Entry
-
-    @EnvironmentObject private var model: InhaleRecordModel
     
     var body: some View {
-        ZStack {
-            AccessoryWidgetBackground()
-            Image(systemName: "wind")
-                .font(.title.bold())
-                .widgetAccentable()
-        }
-        .widgetLabel {
-            Gauge(value: Float(entry.inhales), in: 0...140) {
-                Text("PUFFS")
-            } currentValueLabel: {
-                Text("\(Int(entry.inhales))")
-            } minimumValueLabel: {
-                Text("0")
-            } maximumValueLabel: {
-                Text("140")
-            }
-        }
+        Image(systemName: "wind").resizable()
     }
 }
 

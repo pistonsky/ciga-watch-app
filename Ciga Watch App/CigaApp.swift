@@ -6,16 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct CigaWatchApp: App {
-    
-    @StateObject var itemListModel = InhaleRecordModel()
-    
-    @SceneBuilder var body: some Scene {
+    var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(itemListModel)
         }
+        .modelContainer(for: Inhale.self)
     }
 }
