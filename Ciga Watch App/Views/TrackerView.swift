@@ -17,13 +17,20 @@ struct TrackerView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                let inhalesCount = inhales.reduce(0) { partialResult, Inhale in
-                    partialResult + (Calendar.current.isDateInToday(Inhale.smokeDate) ? Inhale.n : 0)
+                VStack {
+                    let inhalesCount = inhales.reduce(0) { partialResult, Inhale in
+                        partialResult + (Calendar.current.isDateInToday(Inhale.smokeDate) ? Inhale.n : 0)
+                    }
+                    Text(inhalesCount, format: .number)
+                        .font(.largeTitle)
+                        .foregroundColor(.accentColor)
+                    
+                    let lastInhale = inhales.last
+                    Text(timerInterval: (lastInhale?.smokeDate ?? Date())...((lastInhale?.smokeDate ?? Date()).addingTimeInterval(3600)), countsDown: false, showsHours: false)
+                        .foregroundColor(.secondary)
                 }
-                Text(inhalesCount, format: .number)
-                    .font(.largeTitle)
-                    .frame(width: geometry.size.width / 2, alignment: .center)
-                    .foregroundColor(.accentColor)
+                .frame(width: geometry.size.width / 2, alignment: .center)
+                
                 List {
                     Button("1 ciga") {
                         let newItem = Inhale(n: 8)
