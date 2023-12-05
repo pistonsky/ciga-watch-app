@@ -46,7 +46,7 @@ struct TrackerView: View {
                         WKInterfaceDevice.current().play(.success)
                     }.foregroundColor(.cyan)
                 }
-                .navigationTitle("Smoke")
+                .navigationTitle("Ciga")
                 .frame(width: geometry.size.width / 2)
                 .offset(x: geometry.size.width / 2)
             }
