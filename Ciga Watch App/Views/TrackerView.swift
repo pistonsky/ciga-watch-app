@@ -26,7 +26,7 @@ struct TrackerView: View {
                         .foregroundColor(.accentColor)
                     
                     let lastInhale = inhales.last
-                    Text(timerInterval: (lastInhale?.smokeDate ?? Date())...((lastInhale?.smokeDate ?? Date()).addingTimeInterval(3600)), countsDown: false, showsHours: false)
+                    Text(timerInterval: (lastInhale?.smokeDate ?? Date())...((lastInhale?.smokeDate ?? Date()).addingTimeInterval(60*60*24)), countsDown: false, showsHours: false)
                         .foregroundColor(.secondary)
                 }
                 .frame(width: geometry.size.width / 2, alignment: .center)
