@@ -35,6 +35,7 @@ struct ChartView: View {
         .chartScrollableAxes(.horizontal)
         .chartXAxis(.hidden)
         .chartXVisibleDomain(length: 3600 * 24 * 10)
+        .defaultScrollAnchor(.topTrailing)
     }
 }
 
