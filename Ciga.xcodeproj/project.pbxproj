@@ -99,6 +99,7 @@
 		F9D799EB2A021181008436C0 /* Complications.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Complications.intentdefinition; sourceTree = "<group>"; };
 		F9D799EC2A021182008436C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F9D799EE2A021182008436C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F9E6DD022C786C0B00BBE4E7 /* Ciga-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Ciga-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		F9FE89A02A06B1EC00465DE6 /* PuffModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PuffModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,6 +146,7 @@
 		F922775B29FE09BF00E0C42F /* Ciga Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				F9E6DD022C786C0B00BBE4E7 /* Ciga-Watch-App-Info.plist */,
 				F922777D29FEBCB000E0C42F /* Resources */,
 				F922777C29FEBC9D00E0C42F /* Views */,
 				F922777B29FEA01600E0C42F /* Models */,
@@ -511,6 +513,7 @@
 				DEVELOPMENT_TEAM = F2UDUTZH7S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Ciga-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Ciga;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
@@ -518,7 +521,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pistonsky.Ciga.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -542,6 +545,7 @@
 				DEVELOPMENT_TEAM = F2UDUTZH7S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Ciga-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Ciga;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
@@ -549,7 +553,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pistonsky.Ciga.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -570,7 +574,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = F2UDUTZH7S;
 				INFOPLIST_KEY_CFBundleDisplayName = Ciga;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pistonsky.Ciga;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -586,7 +590,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = F2UDUTZH7S;
 				INFOPLIST_KEY_CFBundleDisplayName = Ciga;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pistonsky.Ciga;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -613,7 +617,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pistonsky.Ciga.watchkitapp.Complications;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -643,7 +647,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pistonsky.Ciga.watchkitapp.Complications;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
