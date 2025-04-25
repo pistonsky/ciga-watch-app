@@ -19,6 +19,7 @@
 		F922777A29FE96CC00E0C42F /* ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F922777929FE96CC00E0C42F /* ChartData.swift */; };
 		F922777F29FEC02900E0C42F /* Color+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F922777E29FEC02900E0C42F /* Color+AppColors.swift */; };
 		F922778129FEC3F900E0C42F /* DateFormatStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F922778029FEC3F900E0C42F /* DateFormatStyle.swift */; };
+		F92EA9A72DBB9C0D00DB33A2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EA9A62DBB9C0D00DB33A2 /* SettingsView.swift */; };
 		F9D022822AA0929300A11874 /* Inhale.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D022812AA0929300A11874 /* Inhale.swift */; };
 		F9D022832AA0929300A11874 /* Inhale.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D022812AA0929300A11874 /* Inhale.swift */; };
 		F9D799E52A021181008436C0 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9D799E42A021181008436C0 /* WidgetKit.framework */; };
@@ -91,6 +92,7 @@
 		F922777929FE96CC00E0C42F /* ChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartData.swift; sourceTree = "<group>"; };
 		F922777E29FEC02900E0C42F /* Color+AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+AppColors.swift"; sourceTree = "<group>"; };
 		F922778029FEC3F900E0C42F /* DateFormatStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatStyle.swift; sourceTree = "<group>"; };
+		F92EA9A62DBB9C0D00DB33A2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F9D022812AA0929300A11874 /* Inhale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inhale.swift; sourceTree = "<group>"; };
 		F9D799E22A021181008436C0 /* ComplicationsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ComplicationsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9D799E42A021181008436C0 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -180,6 +182,7 @@
 		F922777C29FEBC9D00E0C42F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F92EA9A62DBB9C0D00DB33A2 /* SettingsView.swift */,
 				F922777729FE956500E0C42F /* ChartView.swift */,
 				F922777529FE94D500E0C42F /* TrackerView.swift */,
 				F922775E29FE09BF00E0C42F /* ContentView.swift */,
@@ -357,6 +360,7 @@
 				F922777429FE31C100E0C42F /* InhaleRecordModel.swift in Sources */,
 				F922777829FE956500E0C42F /* ChartView.swift in Sources */,
 				F9D022822AA0929300A11874 /* Inhale.swift in Sources */,
+				F92EA9A72DBB9C0D00DB33A2 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

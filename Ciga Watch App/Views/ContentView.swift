@@ -11,14 +11,18 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var inhales: [Inhale]
+    @State private var showInhales = true
     
     var body: some View {
         TabView {
             NavigationStack {
-                TrackerView(inhales: inhales)
+                SettingsView(showInhales: $showInhales)
             }
             NavigationStack {
-                ChartView(inhales: inhales)
+                TrackerView(inhales: inhales, showInhales: showInhales)
+            }
+            NavigationStack {
+                ChartView(inhales: inhales, showInhales: showInhales)
             }
         }.tabViewStyle(.page)
     }

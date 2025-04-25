@@ -10,14 +10,22 @@ import SwiftUI
 
 struct ChartView: View {
     var inhales: [Inhale]
+    var showInhales: Bool = true
     
     private var chartData: [ChartData.DataElement] {
-        let data = ChartData.createData(inhales)
-        if (data.count > 0) {
-            return data;
-//            return Array(data[chartDataRange.clamped(to: (0...data.count - 1))])
+        var data = ChartData.createData(inhales)
+        
+        if !showInhales {
+            // Convert inhales to cigarettes (1 cig = 8 inhales)
+            data = data.map { element in
+                ChartData.DataElement(
+                    date: element.date,
+                    inhales: element.inhales / 8
+                )
+            }
         }
-        return [];
+
+        return data.isEmpty ? [] : data
     }
     
     var body: some View {
@@ -25,7 +33,7 @@ struct ChartView: View {
             ForEach(chartData, id: \.id) {
                 BarMark(
                     x: .value("Day", $0.date),
-                    y: .value("Inhales", $0.inhales),
+                    y: .value(showInhales ? "Inhales" : "Cigarettes", $0.inhales),
                     width: 10
                 )
                 .cornerRadius(5)
@@ -36,6 +44,7 @@ struct ChartView: View {
         .chartXAxis(.hidden)
         .chartXVisibleDomain(length: 3600 * 24 * 10)
         .defaultScrollAnchor(.topTrailing)
+        .navigationTitle(showInhales ? "Inhales" : "Cigarettes")
     }
 }
 

@@ -11,6 +11,7 @@ import SwiftData
 
 struct TrackerView: View {
     var inhales: [Inhale]
+    var showInhales: Bool
 
     @Environment(\.modelContext) private var modelContext
     
@@ -18,10 +19,12 @@ struct TrackerView: View {
         GeometryReader { geometry in
             ZStack {
                 VStack {
-                    let inhalesCount = inhales.reduce(0) { partialResult, Inhale in
+                    let totalInhales = inhales.reduce(0) { partialResult, Inhale in
                         partialResult + (Calendar.current.isDateInToday(Inhale.smokeDate) ? Inhale.n : 0)
                     }
-                    Text(inhalesCount, format: .number)
+                    
+                    let displayCount = showInhales ? totalInhales : (totalInhales / 8)
+                    Text(displayCount, format: .number)
                         .font(.largeTitle)
                         .foregroundColor(.accentColor)
                     
@@ -53,7 +56,7 @@ struct TrackerView: View {
                         WKInterfaceDevice.current().play(.success)
                     }.foregroundColor(.cyan)
                 }
-                .navigationTitle("Ciga")
+                .navigationTitle(showInhales ? "Inhales" : "Cigas")
                 .frame(width: geometry.size.width / 2)
                 .offset(x: geometry.size.width / 2)
             }
