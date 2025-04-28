@@ -20,6 +20,8 @@
 		F922777F29FEC02900E0C42F /* Color+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F922777E29FEC02900E0C42F /* Color+AppColors.swift */; };
 		F922778129FEC3F900E0C42F /* DateFormatStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F922778029FEC3F900E0C42F /* DateFormatStyle.swift */; };
 		F92EA9A72DBB9C0D00DB33A2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EA9A62DBB9C0D00DB33A2 /* SettingsView.swift */; };
+		F99640312DBFA80A007D9F79 /* AppGroupConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F996402F2DBFA80A007D9F79 /* AppGroupConstants.swift */; };
+		F99640322DBFA80A007D9F79 /* AppGroupConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F996402F2DBFA80A007D9F79 /* AppGroupConstants.swift */; };
 		F9D022822AA0929300A11874 /* Inhale.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D022812AA0929300A11874 /* Inhale.swift */; };
 		F9D022832AA0929300A11874 /* Inhale.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D022812AA0929300A11874 /* Inhale.swift */; };
 		F9D799E52A021181008436C0 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9D799E42A021181008436C0 /* WidgetKit.framework */; };
@@ -93,6 +95,9 @@
 		F922777E29FEC02900E0C42F /* Color+AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+AppColors.swift"; sourceTree = "<group>"; };
 		F922778029FEC3F900E0C42F /* DateFormatStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatStyle.swift; sourceTree = "<group>"; };
 		F92EA9A62DBB9C0D00DB33A2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		F996402D2DBFA374007D9F79 /* Ciga Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Ciga Watch App.entitlements"; sourceTree = "<group>"; };
+		F996402E2DBFA385007D9F79 /* ComplicationsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ComplicationsExtension.entitlements; sourceTree = "<group>"; };
+		F996402F2DBFA80A007D9F79 /* AppGroupConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroupConstants.swift; sourceTree = "<group>"; };
 		F9D022812AA0929300A11874 /* Inhale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inhale.swift; sourceTree = "<group>"; };
 		F9D799E22A021181008436C0 /* ComplicationsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ComplicationsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9D799E42A021181008436C0 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -128,6 +133,8 @@
 		F922774A29FE09BF00E0C42F = {
 			isa = PBXGroup;
 			children = (
+				F99640302DBFA80A007D9F79 /* Shared */,
+				F996402E2DBFA385007D9F79 /* ComplicationsExtension.entitlements */,
 				F922775B29FE09BF00E0C42F /* Ciga Watch App */,
 				F9D799E82A021181008436C0 /* Complications */,
 				F9D799E32A021181008436C0 /* Frameworks */,
@@ -148,6 +155,7 @@
 		F922775B29FE09BF00E0C42F /* Ciga Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				F996402D2DBFA374007D9F79 /* Ciga Watch App.entitlements */,
 				F9E6DD022C786C0B00BBE4E7 /* Ciga-Watch-App-Info.plist */,
 				F922777D29FEBCB000E0C42F /* Resources */,
 				F922777C29FEBC9D00E0C42F /* Views */,
@@ -196,6 +204,14 @@
 				F922776029FE09C000E0C42F /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		F99640302DBFA80A007D9F79 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				F996402F2DBFA80A007D9F79 /* AppGroupConstants.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		F9D799E32A021181008436C0 /* Frameworks */ = {
@@ -349,6 +365,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F922777229FE2F8D00E0C42F /* InhaleRecord.swift in Sources */,
+				F99640322DBFA80A007D9F79 /* AppGroupConstants.swift in Sources */,
 				F922775F29FE09BF00E0C42F /* ContentView.swift in Sources */,
 				F9FE89A12A06B1EC00465DE6 /* PuffModel.xcdatamodeld in Sources */,
 				F922775D29FE09BF00E0C42F /* CigaApp.swift in Sources */,
@@ -373,6 +390,7 @@
 				F9D799FB2A021899008436C0 /* ChartData.swift in Sources */,
 				F9D799FC2A021A3C008436C0 /* InhaleRecord.swift in Sources */,
 				F9FE89A22A06B1EC00465DE6 /* PuffModel.xcdatamodeld in Sources */,
+				F99640312DBFA80A007D9F79 /* AppGroupConstants.swift in Sources */,
 				F9D022832AA0929300A11874 /* Inhale.swift in Sources */,
 				F9D799FA2A0216B6008436C0 /* InhaleRecordModel.swift in Sources */,
 			);
@@ -511,6 +529,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Ciga Watch App/Ciga Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Ciga Watch App/Preview Content\"";
@@ -525,7 +544,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pistonsky.Ciga.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -543,6 +562,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Ciga Watch App/Ciga Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Ciga Watch App/Preview Content\"";
@@ -557,7 +577,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pistonsky.Ciga.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -608,6 +628,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = ComplicationsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = F2UDUTZH7S;
@@ -638,6 +659,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = ComplicationsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = F2UDUTZH7S;

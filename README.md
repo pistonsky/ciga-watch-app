@@ -76,4 +76,27 @@ SOFTWARE.
 
 ## Author
 
-Aleksandr Tsygankov 
+Aleksandr Tsygankov
+
+## Setup Instructions
+
+### Adding the AppGroupConstants.swift to both targets
+
+To fix the build errors, you need to make sure the AppGroupConstants.swift file is added to both targets:
+
+1. In Xcode, select the `AppGroupConstants.swift` file in the Project Navigator
+2. Open the File Inspector in the right sidebar (the rightmost tab)
+3. Under "Target Membership", check both:
+   - "Ciga Watch App"
+   - "ComplicationsExtension"
+
+### App Groups Setup
+
+Make sure to enable App Groups capability for both targets:
+
+1. Select each target in Xcode
+2. Go to "Signing & Capabilities"
+3. Add the "App Groups" capability if not already added
+4. Add the group: `group.com.pistonsky.Ciga`
+
+This allows the watch app and the complications widget to share data through UserDefaults. 
