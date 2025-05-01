@@ -20,6 +20,7 @@
 		F922777F29FEC02900E0C42F /* Color+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F922777E29FEC02900E0C42F /* Color+AppColors.swift */; };
 		F922778129FEC3F900E0C42F /* DateFormatStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F922778029FEC3F900E0C42F /* DateFormatStyle.swift */; };
 		F92EA9A72DBB9C0D00DB33A2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92EA9A62DBB9C0D00DB33A2 /* SettingsView.swift */; };
+		F94BA3602DC38D7800F48E9C /* ComparisonChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BA35F2DC38D7800F48E9C /* ComparisonChartView.swift */; };
 		F99640312DBFA80A007D9F79 /* AppGroupConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F996402F2DBFA80A007D9F79 /* AppGroupConstants.swift */; };
 		F99640322DBFA80A007D9F79 /* AppGroupConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F996402F2DBFA80A007D9F79 /* AppGroupConstants.swift */; };
 		F9D022822AA0929300A11874 /* Inhale.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D022812AA0929300A11874 /* Inhale.swift */; };
@@ -95,6 +96,7 @@
 		F922777E29FEC02900E0C42F /* Color+AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+AppColors.swift"; sourceTree = "<group>"; };
 		F922778029FEC3F900E0C42F /* DateFormatStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatStyle.swift; sourceTree = "<group>"; };
 		F92EA9A62DBB9C0D00DB33A2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		F94BA35F2DC38D7800F48E9C /* ComparisonChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonChartView.swift; sourceTree = "<group>"; };
 		F996402D2DBFA374007D9F79 /* Ciga Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Ciga Watch App.entitlements"; sourceTree = "<group>"; };
 		F996402E2DBFA385007D9F79 /* ComplicationsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ComplicationsExtension.entitlements; sourceTree = "<group>"; };
 		F996402F2DBFA80A007D9F79 /* AppGroupConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroupConstants.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 		F922777C29FEBC9D00E0C42F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F94BA35F2DC38D7800F48E9C /* ComparisonChartView.swift */,
 				F92EA9A62DBB9C0D00DB33A2 /* SettingsView.swift */,
 				F922777729FE956500E0C42F /* ChartView.swift */,
 				F922777529FE94D500E0C42F /* TrackerView.swift */,
@@ -368,6 +371,7 @@
 				F99640322DBFA80A007D9F79 /* AppGroupConstants.swift in Sources */,
 				F922775F29FE09BF00E0C42F /* ContentView.swift in Sources */,
 				F9FE89A12A06B1EC00465DE6 /* PuffModel.xcdatamodeld in Sources */,
+				F94BA3602DC38D7800F48E9C /* ComparisonChartView.swift in Sources */,
 				F922775D29FE09BF00E0C42F /* CigaApp.swift in Sources */,
 				F922778129FEC3F900E0C42F /* DateFormatStyle.swift in Sources */,
 				F922777629FE94D500E0C42F /* TrackerView.swift in Sources */,

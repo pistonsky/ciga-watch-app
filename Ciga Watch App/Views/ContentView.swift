@@ -16,13 +16,16 @@ struct ContentView: View {
     var body: some View {
         TabView {
             NavigationStack {
-                SettingsView(showInhales: $showInhales)
-            }
-            NavigationStack {
                 TrackerView(inhales: inhales, showInhales: showInhales)
             }
             NavigationStack {
                 ChartView(inhales: inhales, showInhales: showInhales)
+            }
+            NavigationStack {
+                ComparisonChartView(inhales: inhales, showInhales: showInhales)
+            }
+            NavigationStack {
+                SettingsView(showInhales: $showInhales)
             }
         }.tabViewStyle(.page)
     }
