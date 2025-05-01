@@ -27,10 +27,10 @@ struct Provider: IntentTimelineProvider {
         var entries: [SimpleEntry] = []
         let lastSmokeDate = getLastSmokeDate() ?? Date().addingTimeInterval(-3600)
         
-        // Generate a timeline with entries every 5 minutes
+        // Generate a timeline with entries every minute
         let currentDate = Date()
         let calendar = Calendar.current
-        for minuteOffset in stride(from: 0, to: 60, by: 5) {
+        for minuteOffset in stride(from: 0, to: 30, by: 1) {
             let entryDate = calendar.date(byAdding: .minute, value: minuteOffset, to: currentDate)!
             let entry = SimpleEntry(date: entryDate, lastSmokeDate: lastSmokeDate, configuration: configuration)
             entries.append(entry)
