@@ -73,12 +73,21 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
+            BlueprintIdentifier = "F9D799E12A021181008436C0"
+            BuildableName = "ComplicationsExtension.appex"
+            BlueprintName = "ComplicationsExtension"
+            ReferencedContainer = "container:Ciga.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
             BlueprintIdentifier = "F922775629FE09BF00E0C42F"
             BuildableName = "Ciga Watch App.app"
             BlueprintName = "Ciga Watch App"
             ReferencedContainer = "container:Ciga.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "_XCWidgetKind"

@@ -11,6 +11,8 @@ import Foundation
 enum AppGroupConstants {
     static let suiteName = "group.com.pistonsky.Ciga"
     static let lastSmokeDateKey = "lastSmokeDate"
+    static let arcPeriodHoursKey = "arcPeriodHours"
+    static let defaultArcPeriodHours: Double = 2.0
     
     static let sharedUserDefaults = UserDefaults(suiteName: suiteName) ?? UserDefaults.standard
 } 

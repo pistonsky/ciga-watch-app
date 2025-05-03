@@ -122,17 +122,42 @@ struct CornerView: View {
     var entry: Provider.Entry
     
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Image(systemName: "clock.arrow.2.circlepath")
-                    .font(.caption2)
-                Text(entry.formattedElapsedTime)
-                    .font(.caption2)
-                    .monospacedDigit()
-            }
-            Text("since last")
-                .font(.caption2)
+        ZStack {
+            AccessoryWidgetBackground()
+            Image(systemName: "wind")
+                .font(.title.bold())
         }
+        .widgetLabel {
+            // Use the proper structure as shown in WWDC 22
+            Gauge(value: min(entry.elapsedTimeInterval, getArcPeriodSeconds()),
+                  in: 0...getArcPeriodSeconds()) {
+                // Label with icon representing cigarettes
+                // Image(systemName: "clock.arrow.2.circlepath")
+                //     .font(.title.bold())
+            } currentValueLabel: {
+                // Format the value appropriately
+                if entry.elapsedTimeInterval >= 3600 {
+                    Text("\(Int(entry.elapsedTimeInterval / 3600))h")
+                        .monospacedDigit()
+                } else {
+                    Text("\(max(1, Int(entry.elapsedTimeInterval / 60)))m")
+                        .monospacedDigit()
+                }
+            } minimumValueLabel: {
+                Text("0")
+            } maximumValueLabel: {
+                // Show the configured maximum
+                Text("\(Int(getArcPeriodSeconds() / 3600))")
+            }
+            .gaugeStyle(.accessoryLinearCapacity)
+            .tint(Gradient(colors: [.orange, .orange.opacity(0.5)]))
+        }
+    }
+    
+    // Get arc period in seconds from settings
+    private func getArcPeriodSeconds() -> TimeInterval {
+        let hours = AppGroupConstants.sharedUserDefaults.double(forKey: AppGroupConstants.arcPeriodHoursKey)
+        return hours > 0 ? hours * 3600 : AppGroupConstants.defaultArcPeriodHours * 3600
     }
 }
 
