@@ -14,34 +14,40 @@ private let _ensureContainerAccess = AppGroupConstants.sharedUserDefaults
 
 struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), lastSmokeDate: Date().addingTimeInterval(-3600), configuration: ConfigurationIntent())
+        SimpleEntry(date: Date(), lastSmokeDate: Date().addingTimeInterval(-3600), lastNicotineDate: nil, configuration: ConfigurationIntent())
     }
 
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
         let lastSmokeDate = getLastSmokeDate() ?? Date().addingTimeInterval(-3600)
-        let entry = SimpleEntry(date: Date(), lastSmokeDate: lastSmokeDate, configuration: configuration)
+        let lastNicotineDate = getLastNicotineDate()
+        let entry = SimpleEntry(date: Date(), lastSmokeDate: lastSmokeDate, lastNicotineDate: lastNicotineDate, configuration: configuration)
         completion(entry)
     }
 
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [SimpleEntry] = []
         let lastSmokeDate = getLastSmokeDate() ?? Date().addingTimeInterval(-3600)
-        
+        let lastNicotineDate = getLastNicotineDate()
+
         // Generate a timeline with entries every minute
         let currentDate = Date()
         let calendar = Calendar.current
         for minuteOffset in stride(from: 0, to: 30, by: 1) {
             let entryDate = calendar.date(byAdding: .minute, value: minuteOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, lastSmokeDate: lastSmokeDate, configuration: configuration)
+            let entry = SimpleEntry(date: entryDate, lastSmokeDate: lastSmokeDate, lastNicotineDate: lastNicotineDate, configuration: configuration)
             entries.append(entry)
         }
 
         let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)
     }
-    
+
     private func getLastSmokeDate() -> Date? {
         return AppGroupConstants.sharedUserDefaults.object(forKey: AppGroupConstants.lastSmokeDateKey) as? Date
+    }
+
+    private func getLastNicotineDate() -> Date? {
+        return AppGroupConstants.sharedUserDefaults.object(forKey: AppGroupConstants.lastNicotineDateKey) as? Date
     }
 
     func recommendations() -> [IntentRecommendation<ConfigurationIntent>] {
@@ -53,13 +59,22 @@ struct Provider: IntentTimelineProvider {
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let lastSmokeDate: Date
+    let lastSmokeDate: Date        // last cigarette or vape
+    let lastNicotineDate: Date?     // last any nicotine exposure (includes hookah)
     let configuration: ConfigurationIntent
-    
+
     var elapsedTimeInterval: TimeInterval {
         return date.timeIntervalSince(lastSmokeDate)
     }
-    
+
+    /// Time since last nicotine exposure of any kind (ciga, vape, hookah).
+    var nicotineFreeInterval: TimeInterval {
+        guard let lastNicotine = lastNicotineDate else {
+            return elapsedTimeInterval // fallback to ciga-free
+        }
+        return date.timeIntervalSince(lastNicotine)
+    }
+
     var formattedElapsedTime: String {
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.hour, .minute, .second]
@@ -210,17 +225,23 @@ struct ComplicationsWidget: Widget {
 
 struct Complications_Previews: PreviewProvider {
     static var previews: some View {
+        let previewEntry = SimpleEntry(
+            date: Date(),
+            lastSmokeDate: Date().addingTimeInterval(-3600),
+            lastNicotineDate: Date().addingTimeInterval(-1800),
+            configuration: ConfigurationIntent()
+        )
         Group {
-            ComplicationsEntryView(entry: SimpleEntry(date: Date(), lastSmokeDate: Date().addingTimeInterval(-3600), configuration: ConfigurationIntent()))
+            ComplicationsEntryView(entry: previewEntry)
                 .previewContext(WidgetPreviewContext(family: .accessoryCircular))
-            
-            ComplicationsEntryView(entry: SimpleEntry(date: Date(), lastSmokeDate: Date().addingTimeInterval(-3600), configuration: ConfigurationIntent()))
+
+            ComplicationsEntryView(entry: previewEntry)
                 .previewContext(WidgetPreviewContext(family: .accessoryRectangular))
-            
-            ComplicationsEntryView(entry: SimpleEntry(date: Date(), lastSmokeDate: Date().addingTimeInterval(-3600), configuration: ConfigurationIntent()))
+
+            ComplicationsEntryView(entry: previewEntry)
                 .previewContext(WidgetPreviewContext(family: .accessoryInline))
-            
-            ComplicationsEntryView(entry: SimpleEntry(date: Date(), lastSmokeDate: Date().addingTimeInterval(-3600), configuration: ConfigurationIntent()))
+
+            ComplicationsEntryView(entry: previewEntry)
                 .previewContext(WidgetPreviewContext(family: .accessoryCorner))
         }
     }

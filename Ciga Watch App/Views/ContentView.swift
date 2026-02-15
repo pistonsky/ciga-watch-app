@@ -12,20 +12,32 @@ struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var inhales: [Inhale]
     @State private var showInhales = true
-    
+    @State private var showHookahInChart: Bool
+
+    init() {
+        let saved = AppGroupConstants.sharedUserDefaults.bool(forKey: AppGroupConstants.showHookahInChartKey)
+        _showHookahInChart = State(initialValue: saved)
+    }
+
     var body: some View {
         TabView {
             NavigationStack {
                 TrackerView(inhales: inhales, showInhales: showInhales)
             }
             NavigationStack {
-                ChartView(inhales: inhales, showInhales: showInhales)
+                HookahTrackerView(inhales: inhales)
+            }
+            NavigationStack {
+                StatsView(inhales: inhales)
+            }
+            NavigationStack {
+                ChartView(inhales: inhales, showInhales: showInhales, showHookahInChart: showHookahInChart)
             }
             NavigationStack {
                 ComparisonChartView(inhales: inhales, showInhales: showInhales)
             }
             NavigationStack {
-                SettingsView(showInhales: $showInhales)
+                SettingsView(showInhales: $showInhales, showHookahInChart: $showHookahInChart)
             }
         }.tabViewStyle(.page)
     }

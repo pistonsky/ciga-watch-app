@@ -19,8 +19,10 @@ struct TrackerView: View {
         GeometryReader { geometry in
             ZStack {
                 VStack {
-                    let totalInhales = inhales.reduce(0) { partialResult, Inhale in
-                        partialResult + (Calendar.current.isDateInToday(Inhale.smokeDate) ? Inhale.n : 0)
+                    // Only count ciga/vape events, not hookah
+                    let cigaInhales = inhales.filter { $0.isCigaEvent }
+                    let totalInhales = cigaInhales.reduce(0) { partialResult, inhale in
+                        partialResult + (Calendar.current.isDateInToday(inhale.smokeDate) ? inhale.n : 0)
                     }
                     
                     let displayCount = showInhales ? totalInhales : (totalInhales / 8)
@@ -28,7 +30,7 @@ struct TrackerView: View {
                         .font(.largeTitle)
                         .foregroundColor(.accentColor)
                     
-                    let lastInhale = inhales.last
+                    let lastInhale = cigaInhales.max(by: { $0.smokeDate < $1.smokeDate })
                     Text(timerInterval: (lastInhale?.smokeDate ?? Date())...((lastInhale?.smokeDate ?? Date()).addingTimeInterval(60*60*24)), countsDown: false, showsHours: false)
                         .foregroundColor(.secondary)
                 }

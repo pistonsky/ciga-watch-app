@@ -24,9 +24,10 @@ struct ComparisonChartView: View {
         let today = calendar.startOfDay(for: Date())
         let yesterday = calendar.date(byAdding: .day, value: -1, to: today)!
         
-        // Filter inhales for today and yesterday
-        let todayInhales = inhales.filter { calendar.isDate($0.smokeDate, inSameDayAs: today) }
-        let yesterdayInhales = inhales.filter { calendar.isDate($0.smokeDate, inSameDayAs: yesterday) }
+        // Filter to ciga/vape events only (exclude hookah), then by day
+        let cigaVapeInhales = inhales.filter { $0.isCigaEvent }
+        let todayInhales = cigaVapeInhales.filter { calendar.isDate($0.smokeDate, inSameDayAs: today) }
+        let yesterdayInhales = cigaVapeInhales.filter { calendar.isDate($0.smokeDate, inSameDayAs: yesterday) }
         
         // Group by hour and calculate count
         let todayData = createHourlyData(inhales: todayInhales, day: today)

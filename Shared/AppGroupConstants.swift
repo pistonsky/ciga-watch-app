@@ -10,9 +10,19 @@ import Foundation
 // Shared constants for both app and widget extension
 enum AppGroupConstants {
     static let suiteName = "group.com.pistonsky.Ciga"
-    static let lastSmokeDateKey = "lastSmokeDate"
+
+    // MARK: - Existing Keys
+    static let lastSmokeDateKey = "lastSmokeDate"        // last cigarette or vape date
     static let arcPeriodHoursKey = "arcPeriodHours"
     static let defaultArcPeriodHours: Double = 2.0
-    
+
+    // MARK: - Hookah / Nicotine Keys
+    static let lastNicotineDateKey = "lastNicotineDate"   // last any nicotine exposure
+    static let lastHookahDateKey = "lastHookahDate"       // last hookah session end
+    static let showHookahInChartKey = "showHookahInChart"  // toggle for chart overlay
+
+    // MARK: - Migration
+    static let migrationV2CompletedKey = "migrationV2Completed"
+
     static let sharedUserDefaults = UserDefaults(suiteName: suiteName) ?? UserDefaults.standard
-} 
+}
