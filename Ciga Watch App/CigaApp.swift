@@ -16,11 +16,10 @@ struct CigaWatchApp: App {
     let container: ModelContainer
 
     init() {
-        let schema = Schema([Inhale.self])
-        let config = ModelConfiguration(schema: schema)
-
+        // Use the same initializer as the original .modelContainer(for:) modifier
+        // to guarantee the store is at the same default location as before.
         do {
-            container = try ModelContainer(for: schema, configurations: [config])
+            container = try ModelContainer(for: Inhale.self)
         } catch {
             fatalError("Failed to create ModelContainer: \(error)")
         }
