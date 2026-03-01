@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import UserNotifications
 
 struct HookahTrackerView: View {
     var inhales: [Inhale]
@@ -52,6 +53,7 @@ struct HookahTrackerView: View {
             Button {
                 let session = Inhale(hookahSession: true)
                 modelContext.insert(session)
+                scheduleSessionReminders(from: session.smokeDate)
                 WKInterfaceDevice.current().play(.start)
             } label: {
                 Label("Start Session", systemImage: "play.fill")
@@ -153,6 +155,7 @@ struct HookahTrackerView: View {
                 Button("Done") {
                     if let session = activeSession {
                         session.endHookahSession(intensity: Int(selectedIntensity))
+                        cancelSessionReminders()
                         WKInterfaceDevice.current().play(.stop)
                     }
                     showIntensityPicker = false
@@ -173,5 +176,43 @@ struct HookahTrackerView: View {
         } else {
             return .red
         }
+    }
+
+    // MARK: - Session Reminders
+
+    private static let reminderCategory = "hookahSessionReminder"
+    private static let reminderMinutes = [60, 90, 120, 150, 180, 210, 240]
+
+    private func scheduleSessionReminders(from startTime: Date) {
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]) { _, _ in }
+
+        for minutes in Self.reminderMinutes {
+            let hours = minutes / 60
+            let mins = minutes % 60
+            let label = mins > 0 ? "\(hours)h \(mins)m" : "\(hours)h"
+
+            let content = UNMutableNotificationContent()
+            content.title = "Hookah session active"
+            content.body = "Your session has been running for \(label). Forgot to stop?"
+            content.sound = .default
+            content.categoryIdentifier = Self.reminderCategory
+
+            let trigger = UNTimeIntervalNotificationTrigger(
+                timeInterval: TimeInterval(minutes * 60),
+                repeats: false
+            )
+            let request = UNNotificationRequest(
+                identifier: "\(Self.reminderCategory)_\(minutes)m",
+                content: content,
+                trigger: trigger
+            )
+            center.add(request)
+        }
+    }
+
+    private func cancelSessionReminders() {
+        let ids = Self.reminderMinutes.map { "\(Self.reminderCategory)_\($0)m" }
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ids)
     }
 }
