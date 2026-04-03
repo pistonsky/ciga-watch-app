@@ -23,6 +23,7 @@ enum AppGroupConstants {
 
     // MARK: - Migration
     static let migrationV2CompletedKey = "migrationV2Completed"
+    static let historyBootstrapCompletedKey = "historyBootstrapCompleted"
 
     static let sharedUserDefaults = UserDefaults(suiteName: suiteName) ?? UserDefaults.standard
 }

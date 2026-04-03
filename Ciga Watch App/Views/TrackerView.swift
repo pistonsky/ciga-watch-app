@@ -41,21 +41,25 @@ struct TrackerView: View {
                         let newItem = Inhale(n: 8)
                         modelContext.insert(newItem)
                         WKInterfaceDevice.current().play(.directionDown)
+                        WatchSessionManager.shared.sendLogInhale(date: newItem.smokeDate, n: 8)
                     }.foregroundColor(.orange)
                     Button("1 inhale") {
                         let newItem = Inhale(n: 1)
                         modelContext.insert(newItem)
                         WKInterfaceDevice.current().play(.click)
+                        WatchSessionManager.shared.sendLogInhale(date: newItem.smokeDate, n: 1)
                     }.foregroundColor(.green)
                     Button("2 inhales") {
                         let newItem = Inhale(n: 2)
                         modelContext.insert(newItem)
                         WKInterfaceDevice.current().play(.success)
+                        WatchSessionManager.shared.sendLogInhale(date: newItem.smokeDate, n: 2)
                     }.foregroundColor(.blue)
                     Button("3 inhales") {
                         let newItem = Inhale(n: 3)
                         modelContext.insert(newItem)
                         WKInterfaceDevice.current().play(.success)
+                        WatchSessionManager.shared.sendLogInhale(date: newItem.smokeDate, n: 3)
                     }.foregroundColor(.cyan)
                 }
                 .navigationTitle(showInhales ? "Inhales" : "Cigas")

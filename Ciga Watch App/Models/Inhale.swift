@@ -84,12 +84,40 @@ final class Inhale {
 
     // MARK: - Initializers
 
+    init(
+        smokeDate: Date,
+        n: Int,
+        kind: Kind,
+        endAt: Date? = nil,
+        intensity: Int? = nil,
+        syncSharedState: Bool = false
+    ) {
+        self.smokeDate = smokeDate
+        self.n = n
+        self.kind = kind.rawValue
+        self.endAt = endAt
+        self.intensity = intensity
+
+        guard syncSharedState else { return }
+
+        switch kind {
+        case .cigarette, .vapeInhale:
+            AppGroupConstants.sharedUserDefaults.set(smokeDate, forKey: AppGroupConstants.lastSmokeDateKey)
+            AppGroupConstants.sharedUserDefaults.set(smokeDate, forKey: AppGroupConstants.lastNicotineDateKey)
+        case .hookahSession:
+            let exposureDate = endAt ?? smokeDate
+            AppGroupConstants.sharedUserDefaults.set(exposureDate, forKey: AppGroupConstants.lastNicotineDateKey)
+            AppGroupConstants.sharedUserDefaults.set(exposureDate, forKey: AppGroupConstants.lastHookahDateKey)
+        }
+    }
+
     /// Backward-compatible init for cigarette / vape inhale events.
     /// n >= 8 is treated as cigarette, otherwise vape inhale.
-    init(n: Int = 1) {
-        self.smokeDate = Date()
+    init(n: Int = 1, date: Date = Date()) {
+        let kind: Kind = (n >= 8) ? .cigarette : .vapeInhale
+        self.smokeDate = date
         self.n = n
-        self.kind = (n >= 8) ? Kind.cigarette.rawValue : Kind.vapeInhale.rawValue
+        self.kind = kind.rawValue
         self.endAt = nil
         self.intensity = nil
 
@@ -106,8 +134,8 @@ final class Inhale {
     }
 
     /// Init for starting a hookah session. Call `endHookahSession(intensity:)` when done.
-    init(hookahSession: Bool) {
-        self.smokeDate = Date()
+    init(hookahSession: Bool, date: Date = Date()) {
+        self.smokeDate = date
         self.n = 0
         self.kind = Kind.hookahSession.rawValue
         self.endAt = nil

@@ -7,6 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA0000000000000100000001 /* CigaIOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000200000001 /* CigaIOSApp.swift */; };
+		AA0000000000000100000002 /* CigaTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000200000002 /* CigaTabView.swift */; };
+		AA0000000000000100000003 /* TrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000200000003 /* TrackerView.swift */; };
+		AA0000000000000100000004 /* HookahTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000200000004 /* HookahTrackerView.swift */; };
+		AA0000000000000100000005 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000200000005 /* StatsView.swift */; };
+		AA0000000000000100000006 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000200000006 /* ChartView.swift */; };
+		AA0000000000000100000007 /* ComparisonChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000200000007 /* ComparisonChartView.swift */; };
+		AA0000000000000100000008 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000200000008 /* SettingsView.swift */; };
+		AA0000000000000100000009 /* PhoneSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000200000009 /* PhoneSessionManager.swift */; };
+		AA000000000000010000000A /* LiveActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000020000000A /* LiveActivityManager.swift */; };
+		AA000000000000010000000B /* HookahActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000020000000B /* HookahActivityAttributes.swift */; };
+		AA000000000000010000000C /* AppGroupConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F996402F2DBFA80A007D9F79 /* AppGroupConstants.swift */; };
+		AA000000000000010000000D /* Inhale.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D022812AA0929300A11874 /* Inhale.swift */; };
+		AA000000000000010000000E /* StatsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F990A14A2F41ED00007AB2AE /* StatsEngine.swift */; };
+		AA000000000000010000000F /* ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F922777929FE96CC00E0C42F /* ChartData.swift */; };
+		AA0000000000000100000010 /* Color+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F922777E29FEC02900E0C42F /* Color+AppColors.swift */; };
+		AA0000000000000100000011 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA000000000000020000000F /* Assets.xcassets */; };
+		AA0000000000000100000012 /* CigaLiveActivityBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000020000000D /* CigaLiveActivityBundle.swift */; };
+		AA0000000000000100000013 /* HookahLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000020000000E /* HookahLiveActivity.swift */; };
+		AA0000000000000100000014 /* HookahActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000020000000B /* HookahActivityAttributes.swift */; };
+		AA0000000000000100000015 /* AppGroupConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F996402F2DBFA80A007D9F79 /* AppGroupConstants.swift */; };
+		AA0000000000000100000016 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9D799E42A021181008436C0 /* WidgetKit.framework */; };
+		AA0000000000000100000017 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9D799E62A021181008436C0 /* SwiftUI.framework */; };
+		AA0000000000000100000018 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000000000000020000000C /* WatchSessionManager.swift */; };
+		AA0000000000000100000019 /* CigaLiveActivity.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AA0000000000000200000013 /* CigaLiveActivity.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F922775829FE09BF00E0C42F /* Ciga Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F922775729FE09BF00E0C42F /* Ciga Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F922775D29FE09BF00E0C42F /* CigaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F922775C29FE09BF00E0C42F /* CigaApp.swift */; };
 		F922775F29FE09BF00E0C42F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F922775E29FE09BF00E0C42F /* ContentView.swift */; };
@@ -39,11 +64,21 @@
 		F9D799FA2A0216B6008436C0 /* InhaleRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F922777329FE31C100E0C42F /* InhaleRecordModel.swift */; };
 		F9D799FB2A021899008436C0 /* ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F922777929FE96CC00E0C42F /* ChartData.swift */; };
 		F9D799FC2A021A3C008436C0 /* InhaleRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = F922777129FE2F8D00E0C42F /* InhaleRecord.swift */; };
+		F9EAE08B2F806A340025E9B3 /* DataExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EAE08A2F806A340025E9B3 /* DataExporter.swift */; };
+		F9EAE08C2F806A340025E9B3 /* DataExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EAE08A2F806A340025E9B3 /* DataExporter.swift */; };
+		F9EAE0902F8072A80025E9B3 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9EAE08F2F8072A80025E9B3 /* Launch Screen.storyboard */; };
 		F9FE89A12A06B1EC00465DE6 /* PuffModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F9FE899F2A06B1EC00465DE6 /* PuffModel.xcdatamodeld */; };
 		F9FE89A22A06B1EC00465DE6 /* PuffModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F9FE899F2A06B1EC00465DE6 /* PuffModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		AA0000000000000800000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F922774B29FE09BF00E0C42F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA0000000000000500000001;
+			remoteInfo = CigaLiveActivity;
+		};
 		F922775929FE09BF00E0C42F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F922774B29FE09BF00E0C42F /* Project object */;
@@ -61,6 +96,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		AA0000000000000400000003 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				AA0000000000000100000019 /* CigaLiveActivity.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F922776A29FE09C000E0C42F /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -86,6 +132,26 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AA0000000000000200000001 /* CigaIOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CigaIOSApp.swift; sourceTree = "<group>"; };
+		AA0000000000000200000002 /* CigaTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CigaTabView.swift; sourceTree = "<group>"; };
+		AA0000000000000200000003 /* TrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerView.swift; sourceTree = "<group>"; };
+		AA0000000000000200000004 /* HookahTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HookahTrackerView.swift; sourceTree = "<group>"; };
+		AA0000000000000200000005 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		AA0000000000000200000006 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		AA0000000000000200000007 /* ComparisonChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonChartView.swift; sourceTree = "<group>"; };
+		AA0000000000000200000008 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		AA0000000000000200000009 /* PhoneSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneSessionManager.swift; sourceTree = "<group>"; };
+		AA000000000000020000000A /* LiveActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityManager.swift; sourceTree = "<group>"; };
+		AA000000000000020000000B /* HookahActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HookahActivityAttributes.swift; sourceTree = "<group>"; };
+		AA000000000000020000000C /* WatchSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionManager.swift; sourceTree = "<group>"; };
+		AA000000000000020000000D /* CigaLiveActivityBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CigaLiveActivityBundle.swift; sourceTree = "<group>"; };
+		AA000000000000020000000E /* HookahLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HookahLiveActivity.swift; sourceTree = "<group>"; };
+		AA000000000000020000000F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AA0000000000000200000010 /* Ciga iOS App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Ciga iOS App.entitlements"; sourceTree = "<group>"; };
+		AA0000000000000200000011 /* CigaLiveActivity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CigaLiveActivity.entitlements; sourceTree = "<group>"; };
+		AA0000000000000200000012 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA0000000000000200000013 /* CigaLiveActivity.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CigaLiveActivity.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA0000000000000200000014 /* Ciga-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Ciga-Info.plist"; sourceTree = SOURCE_ROOT; };
 		F922775129FE09BF00E0C42F /* Ciga.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ciga.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F922775729FE09BF00E0C42F /* Ciga Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ciga Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F922775C29FE09BF00E0C42F /* CigaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CigaApp.swift; sourceTree = "<group>"; };
@@ -116,10 +182,28 @@
 		F9D799EC2A021182008436C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F9D799EE2A021182008436C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F9E6DD022C786C0B00BBE4E7 /* Ciga-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Ciga-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+		F9EAE08A2F806A340025E9B3 /* DataExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExporter.swift; sourceTree = "<group>"; };
+		F9EAE08F2F8072A80025E9B3 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		F9FE89A02A06B1EC00465DE6 /* PuffModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PuffModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AA0000000000000400000002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA0000000000000400000005 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA0000000000000100000017 /* SwiftUI.framework in Frameworks */,
+				AA0000000000000100000016 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F922775429FE09BF00E0C42F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -139,13 +223,79 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA0000000000000300000001 /* Ciga iOS App */ = {
+			isa = PBXGroup;
+			children = (
+				AA0000000000000200000010 /* Ciga iOS App.entitlements */,
+				AA0000000000000200000001 /* CigaIOSApp.swift */,
+				AA0000000000000300000002 /* Views */,
+				AA0000000000000300000003 /* Connectivity */,
+				AA0000000000000300000004 /* Resources */,
+				F9EAE08F2F8072A80025E9B3 /* Launch Screen.storyboard */,
+			);
+			path = "Ciga iOS App";
+			sourceTree = "<group>";
+		};
+		AA0000000000000300000002 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AA0000000000000200000002 /* CigaTabView.swift */,
+				AA0000000000000200000003 /* TrackerView.swift */,
+				AA0000000000000200000004 /* HookahTrackerView.swift */,
+				AA0000000000000200000005 /* StatsView.swift */,
+				AA0000000000000200000006 /* ChartView.swift */,
+				AA0000000000000200000007 /* ComparisonChartView.swift */,
+				AA0000000000000200000008 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AA0000000000000300000003 /* Connectivity */ = {
+			isa = PBXGroup;
+			children = (
+				AA0000000000000200000009 /* PhoneSessionManager.swift */,
+				AA000000000000020000000A /* LiveActivityManager.swift */,
+			);
+			path = Connectivity;
+			sourceTree = "<group>";
+		};
+		AA0000000000000300000004 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AA000000000000020000000F /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AA0000000000000300000005 /* CigaLiveActivity */ = {
+			isa = PBXGroup;
+			children = (
+				AA000000000000020000000D /* CigaLiveActivityBundle.swift */,
+				AA000000000000020000000E /* HookahLiveActivity.swift */,
+				AA0000000000000200000012 /* Info.plist */,
+				AA0000000000000200000011 /* CigaLiveActivity.entitlements */,
+			);
+			path = CigaLiveActivity;
+			sourceTree = "<group>";
+		};
+		AA0000000000000300000006 /* Connectivity */ = {
+			isa = PBXGroup;
+			children = (
+				AA000000000000020000000C /* WatchSessionManager.swift */,
+			);
+			path = Connectivity;
+			sourceTree = "<group>";
+		};
 		F922774A29FE09BF00E0C42F = {
 			isa = PBXGroup;
 			children = (
+				AA0000000000000200000014 /* Ciga-Info.plist */,
 				F99640302DBFA80A007D9F79 /* Shared */,
 				F996402E2DBFA385007D9F79 /* ComplicationsExtension.entitlements */,
+				AA0000000000000300000001 /* Ciga iOS App */,
 				F922775B29FE09BF00E0C42F /* Ciga Watch App */,
 				F9D799E82A021181008436C0 /* Complications */,
+				AA0000000000000300000005 /* CigaLiveActivity */,
 				F9D799E32A021181008436C0 /* Frameworks */,
 				F922775229FE09BF00E0C42F /* Products */,
 			);
@@ -157,6 +307,7 @@
 				F922775129FE09BF00E0C42F /* Ciga.app */,
 				F922775729FE09BF00E0C42F /* Ciga Watch App.app */,
 				F9D799E22A021181008436C0 /* ComplicationsExtension.appex */,
+				AA0000000000000200000013 /* CigaLiveActivity.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -169,6 +320,7 @@
 				F922777D29FEBCB000E0C42F /* Resources */,
 				F922777C29FEBC9D00E0C42F /* Views */,
 				F922777B29FEA01600E0C42F /* Models */,
+				AA0000000000000300000006 /* Connectivity */,
 				F922775C29FE09BF00E0C42F /* CigaApp.swift */,
 				F922776229FE09C000E0C42F /* Preview Content */,
 			);
@@ -222,7 +374,9 @@
 		F99640302DBFA80A007D9F79 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				F9EAE08A2F806A340025E9B3 /* DataExporter.swift */,
 				F996402F2DBFA80A007D9F79 /* AppGroupConstants.swift */,
+				AA000000000000020000000B /* HookahActivityAttributes.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -251,22 +405,43 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		AA0000000000000500000001 /* CigaLiveActivity */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA0000000000000700000001 /* Build configuration list for PBXNativeTarget "CigaLiveActivity" */;
+			buildPhases = (
+				AA0000000000000400000004 /* Sources */,
+				AA0000000000000400000005 /* Frameworks */,
+				AA0000000000000400000006 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CigaLiveActivity;
+			productName = CigaLiveActivity;
+			productReference = AA0000000000000200000013 /* CigaLiveActivity.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		F922775029FE09BF00E0C42F /* Ciga */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F922776B29FE09C000E0C42F /* Build configuration list for PBXNativeTarget "Ciga" */;
 			buildPhases = (
+				AA0000000000000400000001 /* Sources */,
+				AA0000000000000400000002 /* Frameworks */,
 				F922774F29FE09BF00E0C42F /* Resources */,
 				F922776A29FE09C000E0C42F /* Embed Watch Content */,
+				AA0000000000000400000003 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				F922775A29FE09BF00E0C42F /* PBXTargetDependency */,
+				AA0000000000000900000001 /* PBXTargetDependency */,
 			);
 			name = Ciga;
 			productName = Ciga;
 			productReference = F922775129FE09BF00E0C42F /* Ciga.app */;
-			productType = "com.apple.product-type.application.watchapp2-container";
+			productType = "com.apple.product-type.application";
 		};
 		F922775629FE09BF00E0C42F /* Ciga Watch App */ = {
 			isa = PBXNativeTarget;
@@ -314,6 +489,9 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					AA0000000000000500000001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
 					F922775029FE09BF00E0C42F = {
 						CreatedOnToolsVersion = 14.3;
 					};
@@ -341,15 +519,25 @@
 				F922775029FE09BF00E0C42F /* Ciga */,
 				F922775629FE09BF00E0C42F /* Ciga Watch App */,
 				F9D799E12A021181008436C0 /* ComplicationsExtension */,
+				AA0000000000000500000001 /* CigaLiveActivity */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AA0000000000000400000006 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F922774F29FE09BF00E0C42F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9EAE0902F8072A80025E9B3 /* Launch Screen.storyboard in Resources */,
+				AA0000000000000100000011 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,10 +561,46 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AA0000000000000400000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA0000000000000100000001 /* CigaIOSApp.swift in Sources */,
+				AA0000000000000100000002 /* CigaTabView.swift in Sources */,
+				AA0000000000000100000003 /* TrackerView.swift in Sources */,
+				AA0000000000000100000004 /* HookahTrackerView.swift in Sources */,
+				AA0000000000000100000005 /* StatsView.swift in Sources */,
+				AA0000000000000100000006 /* ChartView.swift in Sources */,
+				AA0000000000000100000007 /* ComparisonChartView.swift in Sources */,
+				AA0000000000000100000008 /* SettingsView.swift in Sources */,
+				AA0000000000000100000009 /* PhoneSessionManager.swift in Sources */,
+				AA000000000000010000000A /* LiveActivityManager.swift in Sources */,
+				AA000000000000010000000B /* HookahActivityAttributes.swift in Sources */,
+				AA000000000000010000000C /* AppGroupConstants.swift in Sources */,
+				AA000000000000010000000D /* Inhale.swift in Sources */,
+				AA000000000000010000000E /* StatsEngine.swift in Sources */,
+				AA000000000000010000000F /* ChartData.swift in Sources */,
+				F9EAE08C2F806A340025E9B3 /* DataExporter.swift in Sources */,
+				AA0000000000000100000010 /* Color+AppColors.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA0000000000000400000004 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA0000000000000100000012 /* CigaLiveActivityBundle.swift in Sources */,
+				AA0000000000000100000013 /* HookahLiveActivity.swift in Sources */,
+				AA0000000000000100000014 /* HookahActivityAttributes.swift in Sources */,
+				AA0000000000000100000015 /* AppGroupConstants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F922775329FE09BF00E0C42F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9EAE08B2F806A340025E9B3 /* DataExporter.swift in Sources */,
 				F922777229FE2F8D00E0C42F /* InhaleRecord.swift in Sources */,
 				F99640322DBFA80A007D9F79 /* AppGroupConstants.swift in Sources */,
 				F922775F29FE09BF00E0C42F /* ContentView.swift in Sources */,
@@ -395,6 +619,7 @@
 				F922777829FE956500E0C42F /* ChartView.swift in Sources */,
 				F9D022822AA0929300A11874 /* Inhale.swift in Sources */,
 				F92EA9A72DBB9C0D00DB33A2 /* SettingsView.swift in Sources */,
+				AA0000000000000100000018 /* WatchSessionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +642,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		AA0000000000000900000001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA0000000000000500000001 /* CigaLiveActivity */;
+			targetProxy = AA0000000000000800000001 /* PBXContainerItemProxy */;
+		};
 		F922775A29FE09BF00E0C42F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F922775629FE09BF00E0C42F /* Ciga Watch App */;
@@ -430,6 +660,63 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		AA0000000000000600000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CigaLiveActivity/CigaLiveActivity.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F2UDUTZH7S;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CigaLiveActivity/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = CigaLiveActivity;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pistonsky.Ciga.LiveActivity;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AA0000000000000600000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CigaLiveActivity/CigaLiveActivity.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F2UDUTZH7S;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CigaLiveActivity/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = CigaLiveActivity;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pistonsky.Ciga.LiveActivity;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		F922776529FE09C000E0C42F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -480,6 +767,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -533,6 +821,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -557,7 +846,7 @@
 				INFOPLIST_FILE = "Ciga-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Ciga;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKWatchOnly = YES;
+				INFOPLIST_KEY_WKWatchOnly = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -590,7 +879,7 @@
 				INFOPLIST_FILE = "Ciga-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Ciga;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKWatchOnly = YES;
+				INFOPLIST_KEY_WKWatchOnly = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -612,15 +901,33 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Ciga iOS App/Ciga iOS App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = F2UDUTZH7S;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Ciga-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Ciga;
-				MARKETING_VERSION = 1.2;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pistonsky.Ciga;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -628,15 +935,33 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Ciga iOS App/Ciga iOS App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = F2UDUTZH7S;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Ciga-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Ciga;
-				MARKETING_VERSION = 1.2;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pistonsky.Ciga;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -707,6 +1032,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AA0000000000000700000001 /* Build configuration list for PBXNativeTarget "CigaLiveActivity" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA0000000000000600000001 /* Debug */,
+				AA0000000000000600000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F922774E29FE09BF00E0C42F /* Build configuration list for PBXProject "Ciga" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

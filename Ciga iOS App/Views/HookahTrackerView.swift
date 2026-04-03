@@ -1,15 +1,9 @@
-//
-//  HookahTrackerView.swift
-//  Ciga Watch App
-//
-//  Hookah session management: start, track duration, end with intensity.
-//
-
 import SwiftUI
 import SwiftData
+import ActivityKit
 import UserNotifications
 
-struct HookahTrackerView: View {
+struct iOSHookahTrackerView: View {
     var inhales: [Inhale]
 
     @Environment(\.modelContext) private var modelContext
@@ -22,14 +16,14 @@ struct HookahTrackerView: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 12) {
+            VStack(spacing: 24) {
                 if let session = activeSession {
                     activeSessionView(session: session)
                 } else {
                     idleView
                 }
             }
-            .padding(.horizontal, 8)
+            .padding()
         }
         .navigationTitle("Hookah")
         .sheet(isPresented: $showIntensityPicker) {
@@ -37,83 +31,81 @@ struct HookahTrackerView: View {
         }
     }
 
-    // MARK: - Idle State (no active session)
+    // MARK: - Idle State
 
     private var idleView: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: 24) {
+            Spacer().frame(height: 40)
+
             Image(systemName: "smoke")
-                .font(.system(size: 36))
+                .font(.system(size: 64))
                 .foregroundColor(.secondary)
-                .padding(.top, 8)
 
             Text("No active session")
-                .font(.caption)
+                .font(.title3)
                 .foregroundColor(.secondary)
 
             Button {
-                let session = Inhale(hookahSession: true)
-                modelContext.insert(session)
-                scheduleSessionReminders(from: session.smokeDate)
-                WKInterfaceDevice.current().play(.start)
-                WatchSessionManager.shared.sendStartHookah(date: session.smokeDate)
+                startSession()
             } label: {
                 Label("Start Session", systemImage: "play.fill")
+                    .frame(maxWidth: .infinity)
             }
             .buttonStyle(.borderedProminent)
             .tint(.purple)
+            .controlSize(.large)
+            .padding(.horizontal, 24)
 
-            // Quick stats
             let hookahSessions = inhales.filter { $0.isHookahSession && !$0.isActiveHookahSession }
             if !hookahSessions.isEmpty {
                 Divider()
-                VStack(spacing: 4) {
+                VStack(spacing: 8) {
                     let streak = StatsEngine.hookahFreeStreak(inhales: inhales)
                     HStack {
                         Text("Hookah-free")
-                            .font(.caption2)
                             .foregroundColor(.secondary)
                         Spacer()
                         Text(StatsEngine.formatStreak(streak))
-                            .font(.caption2)
+                            .fontWeight(.semibold)
                             .foregroundColor(.purple)
                     }
 
                     let sessionsCount = StatsEngine.hookahSessionsThisMonth(inhales: inhales)
                     HStack {
                         Text("This month")
-                            .font(.caption2)
                             .foregroundColor(.secondary)
                         Spacer()
                         Text("\(sessionsCount) sessions")
-                            .font(.caption2)
+                            .fontWeight(.semibold)
                             .foregroundColor(.purple)
                     }
                 }
-                .padding(.horizontal, 4)
+                .font(.subheadline)
+                .padding(.horizontal, 24)
             }
         }
     }
 
-    // MARK: - Active Session View
+    // MARK: - Active Session
 
     private func activeSessionView(session: Inhale) -> some View {
-        VStack(spacing: 12) {
-            // Live timer
-            Text("Session Active")
-                .font(.caption)
-                .foregroundColor(.purple)
-                .textCase(.uppercase)
+        VStack(spacing: 20) {
+            Spacer().frame(height: 40)
 
-            // Timer showing elapsed time since session start
+            Text("SESSION ACTIVE")
+                .font(.caption)
+                .fontWeight(.bold)
+                .foregroundColor(.purple)
+                .tracking(2)
+
             Text(timerInterval: session.smokeDate...session.smokeDate.addingTimeInterval(86400),
-                 countsDown: false,
-                 showsHours: true)
-                .font(.system(.title2, design: .monospaced))
+                 countsDown: false, showsHours: true)
+                .font(.system(size: 56, weight: .medium, design: .monospaced))
                 .foregroundColor(.purple)
                 .monospacedDigit()
 
             Text("Started \(session.smokeDate, style: .time)")
-                .font(.caption2)
+                .font(.subheadline)
                 .foregroundColor(.secondary)
 
             Button {
@@ -121,57 +113,63 @@ struct HookahTrackerView: View {
                 showIntensityPicker = true
             } label: {
                 Label("End Session", systemImage: "stop.fill")
+                    .frame(maxWidth: .infinity)
             }
             .buttonStyle(.borderedProminent)
             .tint(.red)
+            .controlSize(.large)
+            .padding(.horizontal, 24)
         }
     }
 
-    // MARK: - Intensity Picker Sheet
+    // MARK: - Intensity Picker
 
     private var intensityPickerSheet: some View {
-        ScrollView {
-            VStack(spacing: 12) {
+        NavigationStack {
+            VStack(spacing: 24) {
+                Spacer()
+
                 Text("Session Intensity")
-                    .font(.headline)
+                    .font(.title2)
+                    .fontWeight(.semibold)
 
                 Text("\(Int(selectedIntensity))")
-                    .font(.system(.largeTitle, design: .rounded))
+                    .font(.system(size: 72, weight: .bold, design: .rounded))
                     .foregroundColor(intensityColor)
-                    .fontWeight(.bold)
 
                 Slider(value: $selectedIntensity, in: 1...10, step: 1)
                     .tint(intensityColor)
+                    .padding(.horizontal, 32)
 
                 HStack {
                     Text("Light")
-                        .font(.caption2)
+                        .font(.caption)
                         .foregroundColor(.secondary)
                     Spacer()
                     Text("Heavy")
-                        .font(.caption2)
+                        .font(.caption)
                         .foregroundColor(.secondary)
                 }
+                .padding(.horizontal, 32)
+
+                Spacer()
 
                 Button("Done") {
-                    if let session = activeSession {
-                        let intensity = Int(selectedIntensity)
-                        session.endHookahSession(intensity: intensity)
-                        cancelSessionReminders()
-                        WKInterfaceDevice.current().play(.stop)
-                        WatchSessionManager.shared.sendEndHookah(date: Date(), intensity: intensity)
-                    }
+                    endSession()
                     showIntensityPicker = false
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(.purple)
+                .controlSize(.large)
+                .padding(.horizontal, 32)
+                .padding(.bottom, 24)
             }
-            .padding(.horizontal, 8)
         }
+        .presentationDetents([.medium])
     }
 
     private var intensityColor: Color {
-        let t = (selectedIntensity - 1) / 9.0 // 0..1
+        let t = (selectedIntensity - 1) / 9.0
         if t < 0.5 {
             return .green
         } else if t < 0.75 {
@@ -179,6 +177,25 @@ struct HookahTrackerView: View {
         } else {
             return .red
         }
+    }
+
+    // MARK: - Actions
+
+    private func startSession() {
+        if let startDate = try? HookahSessionService.startSession() {
+            UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+            scheduleSessionReminders(from: startDate)
+        }
+    }
+
+    private func endSession() {
+        guard let session = activeSession else { return }
+        let intensity = Int(selectedIntensity)
+        session.endHookahSession(intensity: intensity)
+        UINotificationFeedbackGenerator().notificationOccurred(.success)
+        cancelSessionReminders()
+        PhoneSessionManager.shared.sendEndHookah(date: Date(), intensity: intensity)
+        LiveActivityManager.endActivity()
     }
 
     // MARK: - Session Reminders
