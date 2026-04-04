@@ -6,7 +6,5 @@
 	<array>
 		<string>ConfigurationIntent</string>
 	</array>
-	<key>WKCompanionAppBundleIdentifier</key>
-	<string>com.pistonsky.Ciga</string>
 </dict>
 </plist>

@@ -9,7 +9,7 @@ import Foundation
 
 // Shared constants for both app and widget extension
 enum AppGroupConstants {
-    static let suiteName = "group.com.pistonsky.Ciga"
+    static let suiteName = "group.dev.pistonsky.ciga"
 
     // MARK: - Existing Keys
     static let lastSmokeDateKey = "lastSmokeDate"        // last cigarette or vape date
