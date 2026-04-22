@@ -13,6 +13,7 @@ struct HookahTrackerView: View {
     var inhales: [Inhale]
 
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.scenePhase) private var scenePhase
     @State private var showIntensityPicker = false
     @State private var selectedIntensity: Double = 5
 
@@ -34,6 +35,23 @@ struct HookahTrackerView: View {
         .navigationTitle("Hookah")
         .sheet(isPresented: $showIntensityPicker) {
             intensityPickerSheet
+        }
+        .onAppear {
+            enforceSessionCap()
+        }
+        .onChange(of: scenePhase) { _, newPhase in
+            guard newPhase == .active else { return }
+            enforceSessionCap()
+        }
+    }
+
+    /// Force-end any active hookah session that has exceeded the 3h hard cap.
+    private func enforceSessionCap() {
+        guard let active = activeSession, active.exceedsMaxDuration else { return }
+        active.forceEndAtCap(defaultIntensity: 5)
+        cancelSessionReminders()
+        if let endAt = active.endAt, let intensity = active.intensity {
+            WatchSessionManager.shared.sendEndHookah(date: endAt, intensity: intensity)
         }
     }
 

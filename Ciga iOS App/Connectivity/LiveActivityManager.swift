@@ -81,6 +81,34 @@ enum HookahSessionService {
         logger.info("Started hookah session from shared service")
         return session.smokeDate
     }
+
+    /// Ends the active hookah session: writes `endAt` (clamped to 3h cap), records
+    /// the intensity, notifies the Watch, and stops the Live Activity. Returns
+    /// true if an active session was found and ended.
+    @discardableResult
+    static func endSession(intensity: Int = 5) -> Bool {
+        guard let context = modelContainer?.mainContext else {
+            logger.error("No model container configured for HookahSessionService")
+            LiveActivityManager.endActivity()
+            return false
+        }
+
+        let descriptor = FetchDescriptor<Inhale>()
+        let existing = (try? context.fetch(descriptor)) ?? []
+        guard let active = existing.first(where: { $0.isActiveHookahSession }) else {
+            logger.info("No active hookah session to end; clearing any stray Live Activity")
+            LiveActivityManager.endActivity()
+            return false
+        }
+
+        active.endHookahSession(intensity: intensity)
+        if let endAt = active.endAt, let storedIntensity = active.intensity {
+            PhoneSessionManager.shared.sendEndHookah(date: endAt, intensity: storedIntensity)
+        }
+        LiveActivityManager.endActivity()
+        logger.info("Ended hookah session from shared service")
+        return true
+    }
 }
 
 struct StartHookahSessionIntent: LiveActivityIntent {
@@ -105,10 +133,12 @@ struct EndHookahSessionIntent: LiveActivityIntent {
     static var openAppWhenRun = false
 
     func perform() async throws -> some ProvidesDialog {
-        await MainActor.run {
-            LiveActivityManager.endActivity()
+        let ended = await MainActor.run {
+            HookahSessionService.endSession(intensity: 5)
         }
-        return .result(dialog: "Ended the hookah Live Activity.")
+        return .result(dialog: ended
+            ? "Ended the hookah session."
+            : "No active hookah session.")
     }
 }
 

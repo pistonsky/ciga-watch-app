@@ -53,10 +53,30 @@ final class Inhale {
         isHookahSession && endAt == nil
     }
 
-    /// Duration in seconds for hookah sessions. Active sessions use current time.
-    var durationSeconds: TimeInterval? {
+    // MARK: - Session Cap
+
+    /// Hard ceiling on how long any hookah session is allowed to run.
+    /// Anything beyond this is treated as a runaway session and clamped.
+    static let maxSessionDuration: TimeInterval = 3 * 60 * 60
+
+    /// Effective end date for a hookah session, clamped to `smokeDate + maxSessionDuration`.
+    /// For active sessions this is min(now, cap). Returns nil for non-hookah events.
+    var cappedEndDate: Date? {
         guard isHookahSession else { return nil }
-        let end = endAt ?? Date()
+        let hardCap = smokeDate.addingTimeInterval(Self.maxSessionDuration)
+        let candidate = endAt ?? Date()
+        return min(candidate, hardCap)
+    }
+
+    /// True when an active hookah session has blown past the 3h cap and should be force-ended.
+    var exceedsMaxDuration: Bool {
+        guard isHookahSession else { return false }
+        return Date() >= smokeDate.addingTimeInterval(Self.maxSessionDuration)
+    }
+
+    /// Duration in seconds for hookah sessions, clamped to the 3h cap.
+    var durationSeconds: TimeInterval? {
+        guard let end = cappedEndDate else { return nil }
         return end.timeIntervalSince(smokeDate)
     }
 
@@ -77,7 +97,7 @@ final class Inhale {
     /// For ciga/vape: smokeDate.
     var exposureDate: Date {
         if isHookahSession {
-            return endAt ?? Date() // active session = exposure right now
+            return cappedEndDate ?? smokeDate
         }
         return smokeDate
     }
@@ -151,14 +171,35 @@ final class Inhale {
     // MARK: - Hookah Session Management
 
     /// End an active hookah session with the given intensity (1..10).
+    /// The end time is clamped to `smokeDate + maxSessionDuration`, guaranteeing
+    /// no session can ever be persisted with a duration greater than the cap.
     func endHookahSession(intensity: Int) {
-        let now = Date()
-        self.endAt = now
+        let hardCap = smokeDate.addingTimeInterval(Self.maxSessionDuration)
+        let effectiveEnd = min(Date(), hardCap)
+        self.endAt = effectiveEnd
         self.intensity = max(1, min(10, intensity))
 
-        AppGroupConstants.sharedUserDefaults.set(now, forKey: AppGroupConstants.lastNicotineDateKey)
-        AppGroupConstants.sharedUserDefaults.set(now, forKey: AppGroupConstants.lastHookahDateKey)
+        AppGroupConstants.sharedUserDefaults.set(effectiveEnd, forKey: AppGroupConstants.lastNicotineDateKey)
+        AppGroupConstants.sharedUserDefaults.set(effectiveEnd, forKey: AppGroupConstants.lastHookahDateKey)
 
         logger.info("Hookah session ended. Duration: \(self.durationMinutes ?? 0) min, intensity: \(self.intensity ?? 0)")
+    }
+
+    /// Force-end an active or runaway hookah session at the 3h cap.
+    /// Used by live enforcement and the v3 history migration for sessions that
+    /// were never properly ended. If `intensity` is already set it is preserved;
+    /// otherwise `defaultIntensity` is used.
+    func forceEndAtCap(defaultIntensity: Int = 5) {
+        guard isHookahSession else { return }
+        let cappedEnd = smokeDate.addingTimeInterval(Self.maxSessionDuration)
+        self.endAt = cappedEnd
+        if self.intensity == nil {
+            self.intensity = max(1, min(10, defaultIntensity))
+        }
+
+        AppGroupConstants.sharedUserDefaults.set(cappedEnd, forKey: AppGroupConstants.lastNicotineDateKey)
+        AppGroupConstants.sharedUserDefaults.set(cappedEnd, forKey: AppGroupConstants.lastHookahDateKey)
+
+        logger.info("Hookah session force-ended at 3h cap. Intensity: \(self.intensity ?? 0)")
     }
 }

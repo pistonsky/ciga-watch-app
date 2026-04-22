@@ -51,14 +51,17 @@ struct CigaTabView: View {
             }
         }
         .onAppear {
+            enforceSessionCap()
             reconcileLiveActivity()
         }
         .onChange(of: scenePhase) { _, newPhase in
             guard newPhase == .active else { return }
+            enforceSessionCap()
             reconcileLiveActivity()
         }
         .onChange(of: activeHookahStartDate) { _, _ in
             guard scenePhase == .active else { return }
+            enforceSessionCap()
             reconcileLiveActivity()
         }
     }
@@ -73,5 +76,17 @@ struct CigaTabView: View {
         } else {
             LiveActivityManager.endActivity()
         }
+    }
+
+    /// Force-end any active hookah session that has exceeded the 3h hard cap.
+    /// This protects against runaway sessions (crashes, missed sync, user forgot to end).
+    private func enforceSessionCap() {
+        guard let active = inhales.first(where: { $0.isActiveHookahSession }),
+              active.exceedsMaxDuration else { return }
+        active.forceEndAtCap(defaultIntensity: 5)
+        if let endAt = active.endAt, let intensity = active.intensity {
+            PhoneSessionManager.shared.sendEndHookah(date: endAt, intensity: intensity)
+        }
+        LiveActivityManager.endActivity()
     }
 }

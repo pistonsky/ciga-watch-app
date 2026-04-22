@@ -26,6 +26,7 @@ struct CigaWatchApp: App {
 
         // Run one-time v2 migration to set correct `kind` for existing records
         performMigrationIfNeeded()
+        performHookahCapMigrationIfNeeded()
 
         WatchSessionManager.shared.modelContainer = container
         WatchSessionManager.shared.activate()
@@ -81,6 +82,53 @@ struct CigaWatchApp: App {
         } catch {
             logger.error("v2 migration failed: \(error.localizedDescription)")
             // Don't mark as completed so it retries on next launch
+        }
+    }
+
+    /// One-time v3 migration: clamp every historical hookah session to the 3h cap
+    /// and close out any orphan active sessions with a default intensity. The
+    /// Watch store is independent from the iPhone store, so both targets must
+    /// heal their own data (same as v2).
+    private func performHookahCapMigrationIfNeeded() {
+        let defaults = AppGroupConstants.sharedUserDefaults
+        guard !defaults.bool(forKey: AppGroupConstants.migrationV3CompletedKey) else {
+            return
+        }
+
+        logger.info("Starting v3 hookah cap migration...")
+
+        let context = container.mainContext
+        let fetchDescriptor = FetchDescriptor<Inhale>()
+
+        do {
+            let allInhales = try context.fetch(fetchDescriptor)
+            var cappedCount = 0
+            var orphanEndedCount = 0
+
+            for inhale in allInhales where inhale.isHookahSession {
+                let hardCap = inhale.smokeDate.addingTimeInterval(Inhale.maxSessionDuration)
+
+                if let end = inhale.endAt {
+                    if end > hardCap {
+                        inhale.endAt = hardCap
+                        cappedCount += 1
+                    }
+                } else if Date() >= hardCap {
+                    inhale.endAt = hardCap
+                    if inhale.intensity == nil {
+                        inhale.intensity = 5
+                    }
+                    orphanEndedCount += 1
+                }
+            }
+
+            try context.save()
+            logger.info("v3 migration complete. Capped \(cappedCount) overlong sessions; closed \(orphanEndedCount) orphan active sessions.")
+
+            defaults.set(true, forKey: AppGroupConstants.migrationV3CompletedKey)
+
+        } catch {
+            logger.error("v3 migration failed: \(error.localizedDescription)")
         }
     }
 }
