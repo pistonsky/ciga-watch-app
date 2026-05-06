@@ -9,6 +9,29 @@ import Foundation
 import SwiftUI
 import SwiftData
 
+private struct ElapsedTimerText: View {
+    let startDate: Date
+
+    var body: some View {
+        TimelineView(.periodic(from: startDate, by: 1.0)) { context in
+            Text(format(elapsed: max(0, context.date.timeIntervalSince(startDate))))
+                .monospacedDigit()
+        }
+    }
+
+    private func format(elapsed: TimeInterval) -> String {
+        let total = Int(elapsed)
+        let days = total / 86400
+        let hours = (total % 86400) / 3600
+        let minutes = (total % 3600) / 60
+        let seconds = total % 60
+        if days > 0 {
+            return String(format: "%dd %02d:%02d:%02d", days, hours, minutes, seconds)
+        }
+        return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
+    }
+}
+
 struct TrackerView: View {
     var inhales: [Inhale]
     var showInhales: Bool
@@ -31,7 +54,7 @@ struct TrackerView: View {
                         .foregroundColor(.accentColor)
                     
                     let lastInhale = cigaInhales.max(by: { $0.smokeDate < $1.smokeDate })
-                    Text(timerInterval: (lastInhale?.smokeDate ?? Date())...((lastInhale?.smokeDate ?? Date()).addingTimeInterval(60*60*24)), countsDown: false, showsHours: false)
+                    ElapsedTimerText(startDate: lastInhale?.smokeDate ?? Date())
                         .foregroundColor(.secondary)
                 }
                 .frame(width: geometry.size.width / 2, alignment: .center)
