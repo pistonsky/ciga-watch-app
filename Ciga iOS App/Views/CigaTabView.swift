@@ -5,12 +5,14 @@ struct CigaTabView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.scenePhase) private var scenePhase
     @Query private var inhales: [Inhale]
-    @State private var showInhales = true
+    @State private var showInhales: Bool
     @State private var showHookahInChart: Bool
 
     init() {
-        let saved = AppGroupConstants.sharedUserDefaults.bool(forKey: AppGroupConstants.showHookahInChartKey)
-        _showHookahInChart = State(initialValue: saved)
+        let savedShowInhales = AppGroupConstants.sharedUserDefaults.object(forKey: AppGroupConstants.showInhalesKey) as? Bool ?? true
+        _showInhales = State(initialValue: savedShowInhales)
+        let savedShowHookah = AppGroupConstants.sharedUserDefaults.bool(forKey: AppGroupConstants.showHookahInChartKey)
+        _showHookahInChart = State(initialValue: savedShowHookah)
     }
 
     var body: some View {

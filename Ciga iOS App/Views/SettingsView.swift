@@ -25,6 +25,9 @@ struct iOSSettingsView: View {
         Form {
             Section {
                 Toggle("Show as Inhales", isOn: $showInhales)
+                    .onChange(of: showInhales) { _, newValue in
+                        AppGroupConstants.sharedUserDefaults.set(newValue, forKey: AppGroupConstants.showInhalesKey)
+                    }
                 Text(showInhales
                      ? "Shows total inhales (8 per cigarette)"
                      : "Shows equivalent cigarettes (1 cig = 8 inhales)")

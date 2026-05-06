@@ -20,6 +20,7 @@ enum AppGroupConstants {
     static let lastNicotineDateKey = "lastNicotineDate"   // last any nicotine exposure
     static let lastHookahDateKey = "lastHookahDate"       // last hookah session end
     static let showHookahInChartKey = "showHookahInChart"  // toggle for chart overlay
+    static let showInhalesKey = "showInhales"              // toggle for inhales vs cigarettes display
 
     // MARK: - Migration
     static let migrationV2CompletedKey = "migrationV2Completed"
