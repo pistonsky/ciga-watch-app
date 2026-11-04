@@ -13,6 +13,12 @@ struct ChartView: View {
     var showInhales: Bool = true
     var showHookahInChart: Bool = false
 
+    /// Width of the visible X window (10 days).
+    private static let visibleDomainLength: TimeInterval = 3600 * 24 * 10
+
+    /// Leading edge of the currently visible X window. Drives the adaptive Y scale.
+    @State private var scrollPosition: Date = Date().addingTimeInterval(-ChartView.visibleDomainLength)
+
     private var chartData: [ChartData.DataElement] {
         var data = ChartData.createData(inhales)
 
@@ -64,10 +70,36 @@ struct ChartView: View {
         .chartForegroundStyleScale(chartColorScale)
         .chartScrollableAxes(.horizontal)
         .chartXAxis(.hidden)
-        .chartXVisibleDomain(length: 3600 * 24 * 10)
+        .chartXVisibleDomain(length: Self.visibleDomainLength)
+        .chartScrollPosition(x: $scrollPosition)
+        .chartYScale(domain: 0...visibleYMax)
+        .animation(.easeInOut(duration: 0.25), value: visibleYMax)
         .defaultScrollAnchor(.topTrailing)
         .chartLegend(showHookahInChart ? .visible : .hidden)
         .navigationTitle(chartTitle)
+    }
+
+    /// Max Y value among bars inside the visible window, with a little headroom,
+    /// so the Y scale adapts as the user scrolls horizontally.
+    private var visibleYMax: Double {
+        let day: TimeInterval = 3600 * 24
+        // Include a day of margin on each side so partially visible bars count.
+        let lower = scrollPosition.addingTimeInterval(-day)
+        let upper = scrollPosition.addingTimeInterval(Self.visibleDomainLength + day)
+        let range = lower...upper
+
+        let cigaMax = chartData
+            .filter { range.contains($0.date) }
+            .map { Double($0.inhales) }
+            .max() ?? 0
+        let hookahMax = hookahChartData
+            .filter { range.contains($0.date) }
+            .map { $0.equivalentCigarettes }
+            .max() ?? 0
+
+        let maxValue = max(cigaMax, hookahMax)
+        guard maxValue > 0 else { return 1 }
+        return (maxValue * 1.1).rounded(.up)
     }
 
     private var chartTitle: String {
