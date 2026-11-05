@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1500"
+   LastUpgradeVersion = "2720"
    version = "2.0">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -69,16 +69,17 @@
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
       launchAutomaticallySubstyle = "2">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/Complications">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F9D799E12A021181008436C0"
             BuildableName = "ComplicationsExtension.appex"
-            BlueprintName = "ComplicationsExtension"
             ReferencedContainer = "container:Ciga.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
@@ -112,16 +113,17 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/Complications">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F9D799E12A021181008436C0"
             BuildableName = "ComplicationsExtension.appex"
-            BlueprintName = "ComplicationsExtension"
             ReferencedContainer = "container:Ciga.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1500"
+   LastUpgradeVersion = "2720"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -53,16 +53,17 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/Ciga">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F922775629FE09BF00E0C42F"
             BuildableName = "Ciga Watch App.app"
-            BlueprintName = "Ciga Watch App"
             ReferencedContainer = "container:Ciga.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -70,16 +71,17 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/Ciga">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F922775629FE09BF00E0C42F"
             BuildableName = "Ciga Watch App.app"
-            BlueprintName = "Ciga Watch App"
             ReferencedContainer = "container:Ciga.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
